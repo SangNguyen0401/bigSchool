@@ -244,6 +244,10 @@
     <Compile Include="Migrations\202006190942087_AddFollowingsTable.Designer.cs">
       <DependentUpon>202006190942087_AddFollowingsTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006191006052_update.cs" />
+    <Compile Include="Migrations\202006191006052_update.Designer.cs">
+      <DependentUpon>202006191006052_update.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -355,6 +359,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202006190942087_AddFollowingsTable.resx">
       <DependentUpon>202006190942087_AddFollowingsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006191006052_update.resx">
+      <DependentUpon>202006191006052_update.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
