@@ -3,7 +3,6 @@ using BigSchool.Models;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -11,30 +10,29 @@ using System.Web.Http;
 
 namespace BigSchool.Controllers
 {
-    [Authorize]
-    public class AttendancesController : ApiController
+    public class FollowingsController : ApiController
     {
         private ApplicationDbContext _dbContext;
 
-        public AttendancesController()
+        public FollowingsController()
         {
             _dbContext = new ApplicationDbContext();
         }
 
         [HttpPost]
-        public IHttpActionResult Attend(AttendanceDto attendanceDto)
+        public IHttpActionResult Follow(FollowingDto FollowingDto)
         {
             var userID = User.Identity.GetUserId();
-            if (_dbContext.Attendances.Any(a => a.FollowerId == userID && a.CourseId == attendanceDto.CourseID))
-                return BadRequest("The Attendence already exists");
+            if (_dbContext.Followings.Any(f => f.FollowerId == userID && f.FollowerId == FollowingDto.FolloweeID))
+                return BadRequest("Following already exists");
 
-            var attendance = new Attendance
+            var Following = new Following
             {
-                CourseId = attendanceDto.CourseID,
-                FollowerId = userID
+                FollowerId = userID,
+                FolloweeId = FollowingDto.FolloweeID
             };
 
-            _dbContext.Attendances.Add(attendance);
+            _dbContext.Followings.Add(Following);
             _dbContext.SaveChanges();
             return Ok();
         }

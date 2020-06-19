@@ -212,9 +212,11 @@
     <Compile Include="Controllers\AttendancesController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\CoursesViewModel.cs" />
+    <Compile Include="Controllers\FollowingsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="DTOs\AttendanceDto.cs" />
+    <Compile Include="DTOs\FollowingDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -238,6 +240,10 @@
     <Compile Include="Migrations\202006190804012_AddAttendance.Designer.cs">
       <DependentUpon>202006190804012_AddAttendance.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006190942087_AddFollowingsTable.cs" />
+    <Compile Include="Migrations\202006190942087_AddFollowingsTable.Designer.cs">
+      <DependentUpon>202006190942087_AddFollowingsTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -245,6 +251,9 @@
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\CulmnAttribute.cs" />
+    <Compile Include="Models\CulumnAttribute.cs" />
+    <Compile Include="Models\Following.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\RequiedAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -343,6 +352,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202006190804012_AddAttendance.resx">
       <DependentUpon>202006190804012_AddAttendance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006190942087_AddFollowingsTable.resx">
+      <DependentUpon>202006190942087_AddFollowingsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
