@@ -1,43 +1,47 @@
-﻿@model BigSchool.ViewModels.CoursesViewModel
+﻿
+@model BigSchool.ViewModels.CoursesViewModel
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Attending";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<h2>Attending</h2>
 
-    <ul class="course">
-        @foreach (var course in Model.UpcomingCourses)
-        {
-            <li>
-                <div class="date">
-                    <div class="month">
-                        @course.Datetime.ToString("MM")
-                    </div>
-                    <div class="day">
-                        @course.Datetime.ToString("dd")
-                    </div>
+<ul class="course">
+    @foreach (var course in Model.UpcomingCourses)
+    {
+        <li>
+            <div class="date">
+                <div class="month">
+                    @course.Datetime.ToString("MM")
                 </div>
-                <div class="details">
-                    <span class="lecturer">
-                        @course.Lecturer.Name
-                        @if (Model.ShowAction)
-                        {
-                            <button class="btn btn-default btn-sm js-toggle-follow" data-user-id="@course.LecturerId">Follow</button>
-                        }
-                    </span>
-                    <span class="category">
-                        @course.Category.Name
-                    </span>
-                   @if (Model.ShowAction)
-                   {
+                <div class="day">
+                    @course.Datetime.ToString("dd")
+                </div>
+            </div>
+            <div class="details">
+                <span class="lecturer">
+                    @course.Lecturer.Name
+                    @if (Model.ShowAction)
+                    {
+
+                        <button class="btn btn-default btn-sm js-toggle-follow" data-user-id="@course.LecturerId">Follow</button>
+                    }
+                </span>
+                <span class="category">
+                    @course.Category.Name
+                </span>
+                @if (Model.ShowAction)
+                {
                     <button data-course-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance"> GOING? </button>
-                   }
-           </div>
+                }
+            </div>
 
-       </li>
-        }
-    </ul>
+        </li>
+    }
+</ul>
 
-    @section scripts
+@section scripts
     {
     <script>
             $(document).ready(function () {
@@ -60,7 +64,7 @@
                     var button = $(e.target);
                     $.post("/api/followings", { followeeID: button.attr("data-user-id") })
                     .done(function () {
-                        button.text("Followings");  
+                        button.text("Followings");
                     })
                     .fail(function () {
                         alert("Something Failed!");
@@ -68,4 +72,4 @@
                 });
             });
     </script>
-    }    
+}

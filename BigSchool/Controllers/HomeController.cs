@@ -1,4 +1,6 @@
 ﻿using BigSchool.Models;
+using BigSchool.ViewModels;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -11,7 +13,7 @@ namespace BigSchool.Controllers
     public class HomeController : Controller
     {
         private ApplicationDbContext _dbContext;
-
+    
         public HomeController()
         {
             _dbContext = new ApplicationDbContext();
@@ -20,14 +22,24 @@ namespace BigSchool.Controllers
 
         public ActionResult Index()
         {
-            var upcommingCourses = _dbContext.Courses
+
+            var userId = User.Identity.GetUserId();
+
+            var upcomingCourses = _dbContext.Courses
                 .Include(c => c.Lecturer)
                 .Include(c => c.Category)
                 .Where(c => c.Datetime > DateTime.Now);
 
+
+            var attend = _dbContext.Attendances
+                   .Include(a => a.Attendee)
+                   .Include(a => a.Course)
+                   .Where(a => a.AttendeeId == userId)
+                   .ToList();
+
             var viewModel = new CoursesViewModel
             {
-                upcommingCourses = upcommingCourses,
+                UpcomingCourses = upcomingCourses,
                 ShowAction = User.Identity.IsAuthenticated
             };
             return View(viewModel);

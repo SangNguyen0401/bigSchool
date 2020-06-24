@@ -21,5 +21,6 @@ namespace BigSchool.Models
         [Column(Order = 2)]
         public string FollowerId { get; set; }
         public string FolloweeId { get; internal set; }
+        public string AttendeeId { get; internal set; }
     }
 }

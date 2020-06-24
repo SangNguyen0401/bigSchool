@@ -10,10 +10,12 @@ namespace BigSchool.Models
     {
         public int Id { get; set; }
 
+        public bool IsCanceled { get; set; }
+
         public ApplicationUser Lecturer { get; set; }
         [Required]
         public string LecturerId { get; set; }
-        [Requied]
+        [Required]
         [StringLength(255)]
         public string Place { get; set; }
         public DateTime Datetime { get; set; }

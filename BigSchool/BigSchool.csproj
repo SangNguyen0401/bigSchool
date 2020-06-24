@@ -209,9 +209,9 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Api\CoursesController.cs" />
     <Compile Include="Controllers\AttendancesController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
-    <Compile Include="Controllers\CoursesViewModel.cs" />
     <Compile Include="Controllers\FollowingsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -244,9 +244,13 @@
     <Compile Include="Migrations\202006190942087_AddFollowingsTable.Designer.cs">
       <DependentUpon>202006190942087_AddFollowingsTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202006191006052_update.cs" />
-    <Compile Include="Migrations\202006191006052_update.Designer.cs">
-      <DependentUpon>202006191006052_update.cs</DependentUpon>
+    <Compile Include="Migrations\202006241600439_fixerror.cs" />
+    <Compile Include="Migrations\202006241600439_fixerror.Designer.cs">
+      <DependentUpon>202006241600439_fixerror.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006241707149_AddIsCanceledColumnToCourse.cs" />
+    <Compile Include="Migrations\202006241707149_AddIsCanceledColumnToCourse.Designer.cs">
+      <DependentUpon>202006241707149_AddIsCanceledColumnToCourse.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -255,13 +259,11 @@
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
-    <Compile Include="Models\CulmnAttribute.cs" />
-    <Compile Include="Models\CulumnAttribute.cs" />
     <Compile Include="Models\Following.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\RequiedAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\CoursesViewModel.cs" />
     <Compile Include="ViewModels\CourseViewModel.cs" />
     <Compile Include="ViewModels\FutureDate.cs" />
     <Compile Include="ViewModels\ValidTime.cs" />
@@ -327,10 +329,11 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Courses\Create.cshtml" />
+    <Content Include="Views\Courses\Attending.cshtml" />
+    <Content Include="Views\Courses\Mine.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="NewFolder1\" />
     <Folder Include="Views\Attendances\" />
   </ItemGroup>
   <ItemGroup>
@@ -360,8 +363,11 @@
     <EmbeddedResource Include="Migrations\202006190942087_AddFollowingsTable.resx">
       <DependentUpon>202006190942087_AddFollowingsTable.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202006191006052_update.resx">
-      <DependentUpon>202006191006052_update.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202006241600439_fixerror.resx">
+      <DependentUpon>202006241600439_fixerror.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006241707149_AddIsCanceledColumnToCourse.resx">
+      <DependentUpon>202006241707149_AddIsCanceledColumnToCourse.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

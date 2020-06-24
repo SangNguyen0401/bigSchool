@@ -7,13 +7,13 @@ namespace BigSchool.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class update : IMigrationMetadata
+    public sealed partial class fixerror : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(update));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(fixerror));
         
         string IMigrationMetadata.Id
         {
-            get { return "202006191006052_update"; }
+            get { return "202006241600439_fixerror"; }
         }
         
         string IMigrationMetadata.Source
