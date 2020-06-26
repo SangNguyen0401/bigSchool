@@ -24,19 +24,32 @@ namespace BigSchool.Controllers
         [HttpPost]
         public IHttpActionResult Attend(AttendanceDto attendanceDto)
         {
-            var userID = User.Identity.GetUserId();
-            if (_dbContext.Attendances.Any(a => a.FollowerId == userID && a.CourseId == attendanceDto.CourseID))
-                return BadRequest("The Attendence already exists");
-
-            var attendance = new Attendance
+            var userId = User.Identity.GetUserId();
+            if (_dbContext.Attendances.Any(a => a.AttendeeId == userId && a.CourseId == attendanceDto.CourseId))
             {
-                CourseId = attendanceDto.CourseID,
-                FollowerId = userID
-            };
+                var attendance = new Attendance
+                {
+                    CourseId = attendanceDto.CourseId,
+                    AttendeeId = userId
+                };
+                _dbContext.Attendances.Attach(attendance);
+                _dbContext.Attendances.Remove(attendance);
+                _dbContext.SaveChanges();
 
-            _dbContext.Attendances.Add(attendance);
-            _dbContext.SaveChanges();
-            return Ok();
+                return Ok();
+            }
+            else
+            {
+                var attendance = new Attendance
+                {
+                    CourseId = attendanceDto.CourseId,
+                    AttendeeId = userId
+                };
+                _dbContext.Attendances.Add(attendance);
+                _dbContext.SaveChanges();
+
+                return Ok();
+            }
         }
     }
 }

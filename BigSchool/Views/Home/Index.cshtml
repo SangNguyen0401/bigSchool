@@ -38,34 +38,48 @@
     </ul>
 
     @section scripts
-    {
+{
     <script>
-            $(document).ready(function () {
-                $(".js-toggle-attendance").click(function (e) {
-                    var button = $(e.target);
-                    $.post("/api/attendance", { courseID: button.attr("data-course-id") })
+        $(document).ready(function () {
+            $(".js-toggle-attendance").click(function (e) {
+                var button = $(e.target);
+                $.post("/api/attendances", { courseId: button.attr("data-course-id") })
                     .done(function () {
-                        button
-                        .removeClass("btn-default")
-                        .addClass("btn-info")
-                        .text("Going");
+                        if (button.text() == "Going?") {
+                            button
+                                .removeClass("btn-default")
+                                .addClass("btn-info")
+                                .text("Going");
+
+                        }
+                        else {
+                            button
+                                .removeClass("btn-info")
+                                .addClass("btn-default")
+                                .text("Going?");
+
+                        }
+
                     })
                     .fail(function () {
-                        alert("Something Failed!");
+                        alert("Something failed!");
                     });
-                });
-
-
-                $(".js-toggle-follow").click(function (e) {
-                    var button = $(e.target);
-                    $.post("/api/followings", { followeeID: button.attr("data-user-id") })
-                    .done(function () {
-                        button.text("Followings");  
-                    })
-                    .fail(function () {
-                        alert("Something Failed!");
-                    });
-                });
             });
+            $(".js-toggle-follow").click(function (e) {
+                var button = $(e.target);
+                $.post("/api/followings", { followeeId: button.attr("data-user-id") })
+                    .done(function () {
+                        if (button.text() == "Follow") {
+                            button.text("Following");
+                        }
+                        else {
+                            button.text("Follow")
+                        }
+                    })
+                    .fail(function () {
+                        alert("Something failed!");
+                    });
+            });
+        });
     </script>
-    }    
+}
